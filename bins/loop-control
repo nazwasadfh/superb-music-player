@@ -1,0 +1,13 @@
+#!/bin/zsh
+if [[ "$(playerctl loop)" == "Track" ]]; then
+  playerctl loop None
+elif [[ "$(playerctl loop)" == "None" || "$(playerctl loop)" == "Playlist" ]]; then
+  playerctl loop Track
+fi
+
+if [[ "$(playerctl loop)" == "Track" ]]; then
+  L="UnLocked"
+else
+  L="Locked"
+fi 
+notify-send "Loop" "$L - current"
