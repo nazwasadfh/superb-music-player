@@ -2,7 +2,7 @@
 
 Terminal vinyl-view player for MPRIS-compatible players (Spotify, universal). Real-time cover art, dominant-color accent computation, spinning disc animation, and keyboard control via `playerctl`.
 
-currently only for linux
+currently only for linux. i guess i wont do it for windows
 
 ---
 
