@@ -2,6 +2,8 @@
 
 Terminal vinyl-view player for MPRIS-compatible players (Spotify, universal). Real-time cover art, dominant-color accent computation, spinning disc animation, and keyboard control via `playerctl`.
 
+currently only for linux
+
 ---
 
 ## 1. Technical / Installation
@@ -10,22 +12,26 @@ Terminal vinyl-view player for MPRIS-compatible players (Spotify, universal). Re
 **Dependencies:** `crossterm`, `image`, `ureq`
 
 **Requirements:**
+
 - `playerctl` working with your player (MPRIS) or Spotify installed.
 - A terminal that supports raw mode and alternate screen (`crossterm`).
 - `bins/matugen` is included in repo; the app calls it at runtime to extract accent colors from album art.
 
 **Build:**
+
 ```bash
 cargo build --release
 ```
 
 **Binaries included (`bins/`):**
+
 - `matugen` — extracts a dominant hex color from an image (used by the TUI for theming).
 - `loop-control` / `loop-control-spotify` — helper scripts for locking/unlocking the current track loop.
 - `lrc_tty` — lyrics / TUI helper (used for lyric display pipelines).
 - `figlet` / `3d.flf` — ASCII art / banner helpers.
 
 **Usage:**
+
 ```bash
 # Universal MPRIS mode (any supported player)
 ./target/release/music -u
@@ -38,6 +44,7 @@ cargo build --release
 ```
 
 **Project files:**
+
 - `src/main.rs` — event loop, rendering, keyboard input, thread management.
 - `src/player.rs` — `playerctl` interaction, MPRIS/Spotify send/recv.
 - `src/render.rs` — terminal rendering, frame compositing, disc animation.
@@ -45,13 +52,15 @@ cargo build --release
 - `screenshots/demo.mp4` — demo recording.
 
 **Debug (single frame, no TTY):**
+
 ```bash
 MUSIC_FRAME_OUT=/tmp/frame.ans ./target/release/music -u
 ```
 
 **Keyboard controls:**
+
 | Key | Action |
-|---|---|
+| --- | --- |
 | `V` | Play / Pause |
 | `C` | Lock / Unlock loop for current track |
 | `B` | Previous track |
@@ -63,6 +72,7 @@ MUSIC_FRAME_OUT=/tmp/frame.ans ./target/release/music -u
 | `Q` | Quit |
 
 **Modes:**
+
 - `Universal` (`-u` / default with args): any MPRIS player via `playerctl`.
 - `Spotify` (`-s`): locked to Spotify with `loop-control-spotify` fallback.
 
